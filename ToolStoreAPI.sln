@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36930.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolStoreAPI", "ToolStoreAPI\ToolStoreAPI.csproj", "{2DA06941-F4B2-A1F7-76FF-63ACE7D9F8BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolStoreAPI.Tests", "ToolStoreAPI.Tests\ToolStoreAPI.Tests.csproj", "{096F2C51-9EEE-A93B-AF01-AA9A2FBF8770}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DA06941-F4B2-A1F7-76FF-63ACE7D9F8BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DA06941-F4B2-A1F7-76FF-63ACE7D9F8BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DA06941-F4B2-A1F7-76FF-63ACE7D9F8BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DA06941-F4B2-A1F7-76FF-63ACE7D9F8BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{096F2C51-9EEE-A93B-AF01-AA9A2FBF8770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{096F2C51-9EEE-A93B-AF01-AA9A2FBF8770}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{096F2C51-9EEE-A93B-AF01-AA9A2FBF8770}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{096F2C51-9EEE-A93B-AF01-AA9A2FBF8770}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4CB46C1-9F2B-42CB-A0F3-688589165963}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tool Store</title>
+</head>
+<body>
+
+<h2>Tool Store Demo</h2>
+
+<button onclick="loadProducts()">Load Products</button>
+<ul id="products"></ul>
+
+<button onclick="addCart()">Add Hammer To Cart</button>
+<button onclick="createOrder()">Create Order</button>
+
+<script>
+async function loadProducts(){
+ let r=await fetch("http://localhost:5000/api/products")
+ let data=await r.json()
+
+ let ul=document.getElementById("products")
+ ul.innerHTML=""
+
+ data.forEach(p=>{
+  let li=document.createElement("li")
+  li.innerText=p.name+" - "+p.price
+  ul.appendChild(li)
+ })
+}
+
+async function addCart(){
+ await fetch("http://localhost:5000/api/cart",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({productId:1,quantity:2})
+ })
+ alert("Added to cart")
+}
+
+async function createOrder(){
+ let r=await fetch("http://localhost:5000/api/orders",{method:"POST"})
+ let data=await r.json()
+ alert("Order total: "+data.totalPrice)
+}
+</script>
+
+</body>
+</html>
