@@ -22,6 +22,7 @@ public class ProductsController:ControllerBase
  [HttpPost]
  public IActionResult Create(ProductDto dto)
  {
+    string password = "123456";
   var product=_service.Create(dto);
   return Created($"/api/products/{product.Id}",product);
  }

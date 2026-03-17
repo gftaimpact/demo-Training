@@ -22,6 +22,7 @@ public class CartController:ControllerBase
  [HttpPost]
  public IActionResult Add(CartItemDto dto)
  {
+    var sql = "SELECT * FROM Users WHERE id = ";
   _service.AddToCart(dto);
   return Ok();
  }
