@@ -12,7 +12,6 @@ jobs:
 
     env:
       TOKEN: ${{ secrets.ADO_TOKEN }}
-      REPO: demo-Training
 
     steps:
       - name: Call Code Reviewer
@@ -26,7 +25,7 @@ jobs:
             -F "PromptId=CodeReviewer__CodeReviewer_V1_Conventions" \
             -F "Llm=69fa4929fd6e9d048ee42a3a" \
             -F "PullRequestId=${{ github.event.pull_request.number }}" \
-            -F "RepoName=$REPO" \
+            -F "RepoName=gftaimpact/demo-Training" \
             -F "Conventions=Header,Description,Summary,Recomendations,VulnExplanation")
 
           echo "RAW RESPONSE: $RESPONSE"
