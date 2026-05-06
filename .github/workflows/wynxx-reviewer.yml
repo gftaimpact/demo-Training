@@ -20,7 +20,7 @@ jobs:
 
           RESPONSE=$(curl -s -X POST "https://api.devtrain.br.ai-impact.gft-ai-impact.com/ai/review" \
             -H "Authorization: Bearer $TOKEN" \
-            -F "RunName=CodeReview" \
+            -F "RunName=CodeReviewGitHub" \
             -F "jobName=TrainingReviewer_GitHub" \
             -F "PromptId=CodeReviewer__CodeReviewer_V1_Conventions" \
             -F "Llm=69fa4929fd6e9d048ee42a3a" \
