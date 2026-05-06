@@ -5,4 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+  <ItemGroup>
+    <!-- Exclude AutoShowRoom sub-projects (have their own .csproj) -->
+    <Compile Remove="AutoShowRoom/**" />
+    <Compile Remove="AutoShowRoom.Tests/**" />
+  </ItemGroup>
 </Project>
