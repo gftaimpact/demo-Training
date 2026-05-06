@@ -1,0 +1,7 @@
+Este é um arquivo de exemplo.
+
+Linha 1: Olá, mundo!
+Linha 2: Este é um texto simples para demonstração.
+Linha 3: Você pode editar este arquivo como quiser.
+
+Fim do arquivo de exemplo.
