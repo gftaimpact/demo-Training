@@ -1,0 +1,36 @@
+name: Wynxx Code Reviewer
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    env:
+      TOKEN: ${{ secrets.ADO_TOKEN }}
+      REPO: demo-Training
+
+    steps:
+      - name: Call Code Reviewer
+        run: |
+          echo "Calling Wynxx Code Reviewer..."
+
+          RESPONSE=$(curl -s -X POST "https://api.devtrain.br.ai-impact.gft-ai-impact.com/ai/review" \
+            -H "Authorization: Bearer $TOKEN" \
+            -F "RunName=CodeReview" \
+            -F "jobName=TrainingReviewer_GitHub" \
+            -F "PromptId=CodeReviewer__CodeReviewer_V1_Conventions" \
+            -F "Llm=69fa4929fd6e9d048ee42a3a" \
+            -F "PullRequestId=${{ github.event.pull_request.number }}" \
+            -F "RepoName=$REPO" \
+            -F "Conventions=Header,Description,Summary,Recomendations,VulnExplanation")
+
+          echo "RAW RESPONSE: $RESPONSE"
+
+          JOB_ID=$(echo $RESPONSE | tr -d '"{}[:space:]' | sed 's/jobId://')
+
+          echo "JOB_ID: $JOB_ID"
