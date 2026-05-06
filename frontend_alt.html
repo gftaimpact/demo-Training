@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tool Store - Frontend Alternativo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-a: #f7f4e8;
+      --bg-b: #e9f2ff;
+      --panel: rgba(255, 255, 255, 0.86);
+      --ink: #18222f;
+      --muted: #4e5b6a;
+      --line: #d0dae5;
+      --accent: #0f766e;
+      --accent-2: #d97706;
+      --danger: #be123c;
+      --shadow: 0 18px 48px rgba(24, 34, 47, 0.12);
+      --radius-lg: 22px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1100px 500px at 8% -10%, #fde68a66, transparent 70%),
+        radial-gradient(1000px 500px at 96% 8%, #67e8f966, transparent 72%),
+        linear-gradient(145deg, var(--bg-a), var(--bg-b));
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: min(980px, 94vw);
+      margin: 32px auto;
+      display: grid;
+      gap: 18px;
+      animation: rise 620ms ease-out both;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(115deg, #ffffffdd, #f8fffbcc);
+      backdrop-filter: blur(3px);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -60px;
+      top: -80px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0f766e20, #d9770620);
+    }
+
+    .eyebrow {
+      margin: 0;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 8px 0 10px;
+      font-family: "Syne", "Trebuchet MS", sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      max-width: 680px;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+      backdrop-filter: blur(5px);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      animation: rise 620ms ease-out both;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      font-family: "Syne", "Trebuchet MS", sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    input, select {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      background: #fff;
+      color: var(--ink);
+      min-width: 150px;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 120ms ease, filter 120ms ease;
+      color: #fff;
+      background: linear-gradient(120deg, var(--accent), #0891b2);
+    }
+
+    button.warn {
+      background: linear-gradient(120deg, var(--accent-2), #f59e0b);
+    }
+
+    button:active {
+      transform: translateY(1px) scale(0.99);
+    }
+
+    button:hover {
+      filter: brightness(1.06);
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    li {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      animation: rise 380ms ease both;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status {
+      margin-top: 10px;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid transparent;
+      background: #eef2f7;
+      color: var(--ink);
+    }
+
+    .status.ok {
+      background: #ecfdf5;
+      border-color: #86efac;
+      color: #166534;
+    }
+
+    .status.err {
+      background: #fff1f2;
+      border-color: #fda4af;
+      color: var(--danger);
+    }
+
+    @media (min-width: 860px) {
+      .grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">Tool Store Experience</p>
+      <h1>Frontend alternativo com visual mais limpo e moderno</h1>
+      <p class="subtitle">A mesma API, agora com uma interface mais agradavel para explorar produtos, adicionar ao carrinho e fechar pedidos.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Produtos</h2>
+        <div class="controls">
+          <label for="apiBase">API Base</label>
+          <input id="apiBase" value="http://localhost:5000/api" />
+          <button id="btnLoad">Carregar produtos</button>
+        </div>
+        <ul id="products"></ul>
+        <div id="productStatus" class="status">Carregue os produtos para iniciar.</div>
+      </article>
+
+      <article class="card">
+        <h2>Carrinho e Pedido</h2>
+        <div class="controls">
+          <label for="productId">Produto</label>
+          <select id="productId"></select>
+
+          <label for="quantity">Qtd</label>
+          <input id="quantity" type="number" min="1" value="1" />
+        </div>
+        <div class="controls">
+          <button id="btnAdd">Adicionar ao carrinho</button>
+          <button id="btnOrder" class="warn">Criar pedido</button>
+        </div>
+        <div id="orderStatus" class="status">Nenhuma acao executada ainda.</div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const productsList = document.getElementById("products");
+    const productSelect = document.getElementById("productId");
+    const quantityInput = document.getElementById("quantity");
+    const apiBaseInput = document.getElementById("apiBase");
+    const productStatus = document.getElementById("productStatus");
+    const orderStatus = document.getElementById("orderStatus");
+
+    document.getElementById("btnLoad").addEventListener("click", loadProducts);
+    document.getElementById("btnAdd").addEventListener("click", addCart);
+    document.getElementById("btnOrder").addEventListener("click", createOrder);
+
+    function setStatus(target, message, kind) {
+      target.textContent = message;
+      target.className = "status" + (kind ? " " + kind : "");
+    }
+
+    function getApiBase() {
+      const base = apiBaseInput.value.trim().replace(/\/+$/, "");
+      return base || "http://localhost:5000/api";
+    }
+
+    function asCurrency(value) {
+      const n = Number(value);
+      return Number.isFinite(n) ? n.toFixed(2) : value;
+    }
+
+    async function loadProducts() {
+      productsList.innerHTML = "";
+      productSelect.innerHTML = "";
+      setStatus(productStatus, "Buscando produtos...", "");
+
+      try {
+        const response = await fetch(`${getApiBase()}/products`);
+        if (!response.ok) {
+          throw new Error(`Falha ao carregar produtos (${response.status})`);
+        }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data) || data.length === 0) {
+          setStatus(productStatus, "Nenhum produto retornado pela API.", "");
+          return;
+        }
+
+        data.forEach((product) => {
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${product.name}</strong><span class="meta">R$ ${asCurrency(product.price)}</span>`;
+          productsList.appendChild(li);
+
+          const option = document.createElement("option");
+          option.value = product.id;
+          option.textContent = `${product.name} (#${product.id})`;
+          productSelect.appendChild(option);
+        });
+
+        setStatus(productStatus, `${data.length} produto(s) carregado(s) com sucesso.`, "ok");
+      } catch (error) {
+        setStatus(productStatus, error.message, "err");
+      }
+    }
+
+    async function addCart() {
+      if (!productSelect.value) {
+        setStatus(orderStatus, "Carregue os produtos antes de adicionar ao carrinho.", "err");
+        return;
+      }
+
+      const quantity = Math.max(1, Number(quantityInput.value) || 1);
+
+      try {
+        const response = await fetch(`${getApiBase()}/cart`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            productId: Number(productSelect.value),
+            quantity
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`Falha ao adicionar no carrinho (${response.status})`);
+        }
+
+        setStatus(orderStatus, "Item adicionado ao carrinho com sucesso.", "ok");
+      } catch (error) {
+        setStatus(orderStatus, error.message, "err");
+      }
+    }
+
+    async function createOrder() {
+      try {
+        const response = await fetch(`${getApiBase()}/orders`, { method: "POST" });
+
+        if (!response.ok) {
+          throw new Error(`Falha ao criar pedido (${response.status})`);
+        }
+
+        const data = await response.json();
+        setStatus(orderStatus, `Pedido criado. Total: R$ ${asCurrency(data.totalPrice)}`, "ok");
+      } catch (error) {
+        setStatus(orderStatus, error.message, "err");
+      }
+    }
+  </script>
+</body>
+</html>
